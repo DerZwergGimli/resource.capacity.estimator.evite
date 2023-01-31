@@ -4,13 +4,10 @@ import {
   draw_HostListPage,
   draw_VMListPage
 } from './drawPages'
-import { draw_CodePage } from './exportCode'
 import { addPageNumbers } from './helperJSPDF'
-
 import { jsPDF } from 'jspdf'
-import { jsPDFDocument } from 'jspdf-autotable'
 
-export async function generatePDF_FULL(doc: jsPDF) {
+export async function generatePDF_FULL(doc: jsPDF): Promise<void> {
   draw_CoverSheet(doc)
   doc.addPage()
 
@@ -26,13 +23,15 @@ export async function generatePDF_FULL(doc: jsPDF) {
   //draw_CodePage(doc)
 
   addPageNumbers(doc)
+  return
 }
 
-export async function generatePDF_SIMPLE(doc: jsPDF) {
+export async function generatePDF_SIMPLE(doc: jsPDF): Promise<void> {
   draw_CoverSheet(doc)
   doc.addPage()
 
   draw_AssignmentPage(doc, false)
 
   addPageNumbers(doc)
+  return
 }

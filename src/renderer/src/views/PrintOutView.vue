@@ -1,6 +1,5 @@
 <script setup lang="ts">
-import { ref, onMounted, h } from 'vue'
-import { useAppStorage } from '../store/AppStorage'
+import { ref, onMounted } from 'vue'
 import { jsPDF } from 'jspdf'
 import { Tabs, Tab } from 'flowbite-vue'
 
@@ -8,7 +7,6 @@ import { generatePDF_FULL, generatePDF_SIMPLE } from '../jsPDF/generator'
 
 const activeTab = ref('full')
 
-const store = useAppStorage()
 const doc_full = new jsPDF('p', 'mm', 'a4')
 const doc_simple = new jsPDF('p', 'mm', 'a4')
 const pdfFile_FULL = ref()
@@ -22,12 +20,13 @@ onMounted(async () => {
   pdfFile_SIMPLE.value = doc_simple.output('datauristring')
 })
 
-function downloadPDF(is_full: boolean) {
+function downloadPDF(is_full: boolean): void {
   if (is_full) {
     doc_full.save()
   } else {
     doc_simple.save()
   }
+  return
 }
 </script>
 

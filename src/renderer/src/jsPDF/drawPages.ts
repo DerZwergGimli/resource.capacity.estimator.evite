@@ -6,11 +6,7 @@ import { calculate_raid } from '../extra/calculator_storage'
 import { RAIDEnums } from '../store/types/enums'
 import { addResources } from './usedResources'
 
-function add_font(doc: jsPDF) {
-  doc.addFont('public/fonts/unifont-13.0.06.ttf', 'Unifont', 'normal')
-}
-
-export function draw_CoverSheet(doc: jsPDF) {
+export function draw_CoverSheet(doc: jsPDF): void {
   draw_outline(doc)
 
   doc.setFontSize(15)
@@ -22,19 +18,22 @@ export function draw_CoverSheet(doc: jsPDF) {
   doc.text(new Date().toLocaleDateString(), doc.internal.pageSize.getWidth() / 2, 250, {
     align: 'center'
   })
-  doc.text(
+
+  //TODO: Add this back
+  /* doc.text(
     'Tool-Version ' + process.env.npm_package_version ?? 'error',
     doc.internal.pageSize.getWidth() / 2,
     255,
     {
       align: 'center'
     }
-  )
+  )*/
 
   doc.setFontSize(15)
+  return
 }
 
-export function draw_HostListPage(doc: jsPDF) {
+export function draw_HostListPage(doc: jsPDF): void {
   draw_outline(doc)
 
   doc.text('List of all Hosts', doc.internal.pageSize.getWidth() / 2, 20, {
@@ -72,9 +71,10 @@ export function draw_HostListPage(doc: jsPDF) {
       }
     }
   })
+  return
 }
 
-export function draw_VMListPage(doc: jsPDF) {
+export function draw_VMListPage(doc: jsPDF): void {
   draw_outline(doc)
 
   doc.text('List of all VMs ', doc.internal.pageSize.getWidth() / 2, 20, {
@@ -112,9 +112,10 @@ export function draw_VMListPage(doc: jsPDF) {
       }
     }
   })
+  return
 }
 
-export function draw_AssignmentPage(doc: jsPDF, show_vm_list: boolean) {
+export function draw_AssignmentPage(doc: jsPDF, show_vm_list: boolean): void {
   draw_outline(doc)
   doc.text('Assignments-List', doc.internal.pageSize.getWidth() / 2, 20, {
     align: 'center'
@@ -212,7 +213,7 @@ export function draw_AssignmentPage(doc: jsPDF, show_vm_list: boolean) {
       }
     ])
 
-    const body_vms: any[] = []
+    const body_vms: never[] = []
     for (let j = 0; j < useAppStorage().assignmentsList[i].vm_uuid.length; j++) {
       useAppStorage().vmsList.forEach((vm) => {
         vm.uuids.forEach((uuid) => {
@@ -405,9 +406,11 @@ export function draw_AssignmentPage(doc: jsPDF, show_vm_list: boolean) {
       doc.addPage()
     }
   }
+  return
 }
 
-function draw_outline(doc: jsPDF) {
+function draw_outline(doc: jsPDF): void {
   doc.setDrawColor('#000000')
   doc.roundedRect(10, 10, 190, doc.internal.pageSize.getHeight() - 20, 5, 5, 'S')
+  return
 }
