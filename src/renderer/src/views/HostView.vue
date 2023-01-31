@@ -23,7 +23,7 @@ import { TOAST_SUCCESS, TOAST_WARNING } from '../extra/toast-config'
 const store = useAppStorage()
 
 defineComponent({ HostTable })
-function clk_addHost() {
+function clk_addHost(): void {
   store.hostsList.push({
     id: store.hostsList.length,
     uuids: [uuid.v4().toString()],
@@ -39,10 +39,12 @@ function clk_addHost() {
     }
   })
   createToast('New Host added!', TOAST_SUCCESS)
+  return
 }
 
-function clk_removeHost(host_uuids: string[]) {
+function clk_removeHost(host_uuids: string[]): void {
   store.remove_host(host_uuids)
   createToast('Host removed!', TOAST_WARNING)
+  return
 }
 </script>

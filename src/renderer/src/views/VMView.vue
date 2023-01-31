@@ -12,12 +12,10 @@
 </template>
 
 <script setup lang="ts">
-import { calculate_total_hosts, calculate_total_vms } from '../js/calculator'
 import VMTable from '../components/table/VMTable.vue'
 import { uuid } from 'vue-uuid'
 import { createToast } from 'mosha-vue-toastify'
-import { defineComponent, unref, watch } from 'vue'
-import ValueCard from '../components/special/ValueCard.vue'
+import { defineComponent } from 'vue'
 import { TOAST_SUCCESS, TOAST_WARNING } from '../extra/toast-config'
 import { useAppStorage } from '../store/AppStorage'
 defineComponent({ VMTable })

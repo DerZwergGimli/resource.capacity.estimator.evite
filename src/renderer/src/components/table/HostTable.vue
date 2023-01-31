@@ -124,9 +124,9 @@
             ></UpDownElement>
           </td>
           <td>
-            <button class="btn-style-del" @click="$emit('clk_remove_item', host.uuids)">
+            <Button color="red" @click="$emit('clk_remove_item', host.uuids)">
               <icon-trash />
-            </button>
+            </Button>
           </td>
         </tr>
       </tbody>
@@ -137,6 +137,7 @@
 <script setup lang="ts">
 import { defineProps, PropType } from 'vue'
 import { Host } from '../../store/types/Host'
+import { Button } from 'flowbite-vue'
 
 import { calculate_storage_netto, calculate_raid } from '../../extra/calculator_storage'
 import { RAIDEnums } from '../../store/types/enums'
@@ -160,8 +161,3 @@ defineProps({
 })
 </script>
 
-<script lang="ts">
-export default {
-  name: 'HostTable'
-}
-</script>
