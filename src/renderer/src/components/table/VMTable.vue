@@ -92,9 +92,9 @@
             ></UpDownElement>
           </th>
           <th>
-            <button class="btn-style-del" @click="$emit('clk_remove_item', vm.uuids)">
+            <Button color="red" @click="$emit('clk_remove_item', vm.uuids)">
               <icon-trash />
-            </button>
+            </Button>
           </th>
         </tr>
       </tbody>
@@ -113,8 +113,8 @@ import IconCpu from '../icons/IconCpu.vue'
 import IconRam from '../icons/IconRam.vue'
 import IconHdd from '../icons/IconHdd.vue'
 import IconTrash from '../icons/IconTrash.vue'
-import IconCalculator from '../icons/IconCalculator.vue'
 import UpDownElement from './table_elements/UpDownElement.vue'
+import { Button } from 'flowbite-vue'
 
 const store = useAppStorage()
 store.init()
