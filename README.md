@@ -1,6 +1,6 @@
 # resource.capacity.estimator.evite
 
-An Electron application with Vue and TypesSript
+An Electron application with Vue and TypesScript
 
 ## Recommended IDE Setup
 
