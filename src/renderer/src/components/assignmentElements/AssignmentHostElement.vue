@@ -3,16 +3,14 @@ import { defineComponent, defineProps, PropType } from 'vue'
 import { Badge } from 'flowbite-vue'
 
 import { Host } from '../../store/types/Host'
-import { VM } from '../../store/types/VM'
-import { Assignment } from '../../store/types/Assignment'
+
 import {
   VirtualHardwareEnums,
   HardwareEnums,
   SystemRecommendationEnums
 } from '../../store/types/enums'
-import { get_used_cpu } from '../../extra/calculator'
 import HostUsageElement from '../../components/assignmentElements/HostUsageElement.vue'
-import IconId from '../icons/IconId.vue'
+
 defineProps({
   host_uuid: {
     type: String,

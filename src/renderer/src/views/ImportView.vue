@@ -22,7 +22,7 @@
 import { Button } from 'flowbite-vue'
 import { createToast } from 'mosha-vue-toastify'
 import { useAppStorage } from '../store/AppStorage'
-import { TOAST_ERROR, TOAST_SUCCESS, TOAST_WARNING } from '../extra/toast-config'
+import { TOAST_ERROR, TOAST_SUCCESS } from '../extra/toast-config'
 
 const storage = useAppStorage()
 

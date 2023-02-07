@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { Navbar, NavbarLogo, NavbarCollapse, NavbarLink } from 'flowbite-vue'
+import { Navbar, NavbarLogo, NavbarCollapse } from 'flowbite-vue'
 import SwitchTheme from '../../components/button/SwitchTheme.vue'
 </script>
 

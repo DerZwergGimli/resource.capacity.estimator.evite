@@ -106,7 +106,7 @@ import {
 } from '../../extra/finder'
 import { get_used_resouce } from '../../extra/calculator'
 
-import { VirtualHardwareEnums, SystemRecommendationEnums } from '../../store/types/enums'
+import { VirtualHardwareEnums } from '../../store/types/enums'
 
 const storage = useAppStorage()
 storage.init()

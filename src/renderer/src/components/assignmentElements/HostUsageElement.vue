@@ -55,7 +55,7 @@
 </template>
 
 <script setup lang="ts">
-import { defineProps, PropType, unref } from 'vue'
+import { defineProps, PropType } from 'vue'
 import { get_used } from '../../extra/calculator'
 import { calculate_raid } from '../../extra/calculator_storage'
 import { HardwareEnums, VirtualHardwareEnums } from '../../store/types/enums'

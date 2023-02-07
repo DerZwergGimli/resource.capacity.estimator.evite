@@ -1,8 +1,7 @@
 import { useAppStorage } from '../store/AppStorage'
 import { VirtualHardwareEnums, SystemRecommendationEnums } from '../store/types/enums'
-import { SystemRecommendations, VM } from '../store/types/VM'
 
-export function get_used(host_uuid: string, hardware_type: VirtualHardwareEnums) {
+export function get_used(host_uuid: string, hardware_type: VirtualHardwareEnums): number {
   const storage = useAppStorage()
 
   // Map all vm_uuids in assignments

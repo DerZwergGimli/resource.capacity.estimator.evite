@@ -21,7 +21,7 @@ const store = useAppStorage()
 
 defineComponent({ VueJsonPretty })
 
- function clk_download_config() {
+function clk_download_config() {
   createToast('Download started...', TOAST_INFO)
   download(
     JSON.stringify(store.export_config(), null, 3),
@@ -40,11 +40,15 @@ function clk_download_presets(): void {
   return
 }
 
-function clk_download_zip() {
+function clk_download_zip(): void {
   createToast('Download started...', TOAST_INFO)
-  make_zip(useAppStorage().export_presets(), useAppStorage().export_config()).then(() => {
+  make_zip(
+    useAppStorage().export_presets() as never,
+    useAppStorage().export_config() as never
+  ).then(() => {
     console.log('Generated .zip')
   })
+  return
 }
 </script>
 

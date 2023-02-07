@@ -71,14 +71,6 @@ export function calculate_cpu_used(
   return 0
 }
 
-function calculate_used_percentage(
-  total_amount: number,
-  array_vm_amounts: number[],
-  array_vm_resources: []
-) {
-  return 0
-}
-
 export function calculate_total_hosts(hosts: AppDataHosts[]): number {
   const total_hosts_list = hosts.map((host) => host.amount)
   return total_hosts_list.reduce((a, b) => {

@@ -7,7 +7,7 @@ export function addResources(
   ram_percentage: number,
   storage_percentage: number
 ) {
-  const page_with = doc.internal.pageSize.getWidth()
+  //const page_with = doc.internal.pageSize.getWidth()
   const bar_width = 20
 
   doc.rect(46, offset_y + 4, bar_width, 5, 'S')
