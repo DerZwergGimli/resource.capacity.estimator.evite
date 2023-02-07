@@ -213,7 +213,7 @@ export function draw_AssignmentPage(doc: jsPDF, show_vm_list: boolean): void {
       }
     ])
 
-    const body_vms: never[] = []
+    const body_vms = []
     for (let j = 0; j < useAppStorage().assignmentsList[i].vm_uuid.length; j++) {
       useAppStorage().vmsList.forEach((vm) => {
         vm.uuids.forEach((uuid) => {
@@ -271,7 +271,7 @@ export function draw_AssignmentPage(doc: jsPDF, show_vm_list: boolean): void {
         colSpan: 1,
         styles: { halign: 'right' }
       }
-    ])
+    ] as never)
 
     body_assignments.push([
       {
