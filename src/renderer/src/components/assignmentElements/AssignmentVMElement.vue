@@ -4,15 +4,15 @@
     class="flex flex-row w-full space-x-4 bg-base-300 dark:bg-slate-600 rounded-2xl px-3 items-center"
   >
     <p class="basis-2/5 text-lg w-full">{{ vm.name }}</p>
-    <div class="basis-1/5 justify-end items-center flex flex-row space-x-1">
+    <div class="resourceelement">
       <p>{{ vm.vcpu[system_recommendation] }}</p>
       <icon-cpu />
     </div>
-    <div class="basis-1/5 justify-end items-center flex flex-row space-x-1">
+    <div class="resourceelement">
       <p>{{ vm.vram[system_recommendation] }}</p>
       <icon-ram />
     </div>
-    <div class="basis-1/5 justify-end items-center flex flex-row space-x-1">
+    <div class="resourceelement">
       <p>{{ vm.vstorage[system_recommendation] }}</p>
       <icon-hdd />
     </div>
@@ -54,4 +54,8 @@ export default {
 }
 </script>
 
-<style scoped></style>
+<style>
+.resourceelement {
+  @apply basis-1/5 justify-end items-center flex flex-row space-x-1;
+}
+</style>

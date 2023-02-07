@@ -1,6 +1,6 @@
 <template>
   <div class="flex flex-col text-center">
-    <div class="flex flex-row items-center justify-end pr-5 pb-3 border-b">
+    <div class="flex flex-row items-center justify-end pr-5 pb-3 border-b space-x-3">
       <Button @click="btn_clearAllAssignments()">Reset assignments</Button>
       <toggle-button text="Grid/Row" @toggle="toggle_grid_row()" />
     </div>
