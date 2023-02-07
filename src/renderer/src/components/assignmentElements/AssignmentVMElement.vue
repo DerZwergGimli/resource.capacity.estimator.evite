@@ -16,9 +16,9 @@
       <p>{{ vm.vstorage[system_recommendation] }}</p>
       <icon-hdd />
     </div>
-    <button v-if="show_button" class="btn-style-del btn-xs" @click="$emit('clk_remove')">
+    <Button v-if="show_button" color="red" size="xs" @click="$emit('clk_remove')">
       <icon-trash />
-    </button>
+    </Button>
   </div>
 </template>
 
@@ -30,6 +30,7 @@ import IconTrash from '../icons/IconTrash.vue'
 import IconCpu from '../icons/IconCpu.vue'
 import IconRam from '../icons/IconRam.vue'
 import IconHdd from '../icons/IconHdd.vue'
+import { Button } from 'flowbite-vue'
 
 defineProps({
   show_button: {

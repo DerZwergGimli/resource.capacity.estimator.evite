@@ -1,7 +1,7 @@
 <template>
   <div class="flex flex-col text-center">
     <div class="flex flex-row items-center justify-end pr-5 pb-3 border-b">
-      <button class="btn-style m-3" @click="btn_clearAllAssignments()">Reset assignments</button>
+      <Button @click="btn_clearAllAssignments()">Reset assignments</Button>
       <toggle-button text="Grid/Row" @toggle="toggle_grid_row()" />
     </div>
 
@@ -100,7 +100,7 @@ import { createToast } from 'mosha-vue-toastify'
 import { TOAST_WARNING } from '../extra/toast-config'
 import { computed, defineComponent, onMounted, ref } from 'vue'
 import { useAppStorage } from '../store/AppStorage'
-import { Accordion, AccordionContent, AccordionHeader, AccordionPanel } from 'flowbite-vue'
+import { Accordion, AccordionContent, AccordionHeader, AccordionPanel, Button } from 'flowbite-vue'
 import ToggleButton from '../components/button/ToggleButton.vue'
 import { Badge } from 'flowbite-vue'
 
