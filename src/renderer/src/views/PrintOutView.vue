@@ -2,7 +2,6 @@
 import { ref, onMounted } from 'vue'
 import { jsPDF } from 'jspdf'
 import { Tabs, Tab } from 'flowbite-vue'
-
 import { generatePDF_FULL, generatePDF_SIMPLE } from '../jsPDF/generator'
 import { Button } from 'flowbite-vue'
 
@@ -43,11 +42,14 @@ function downloadPDF(is_full: boolean): void {
     <Button @click="activeTab === 'full' ? downloadPDF(true) : downloadPDF(false)">
       Save pdf
     </Button>
+
     <iframe
       class="p-3 flex flex-grow"
       width="100%"
       height="100%"
       :src="activeTab === 'full' ? pdfFile_FULL : pdfFile_SIMPLE"
-    ></iframe>
+    >
+      Unable to load pdf-preview!
+    </iframe>
   </div>
 </template>
