@@ -1,6 +1,6 @@
 import { jsPDF } from 'jspdf'
 import autoTable from 'jspdf-autotable'
-
+import { version } from '../../../../package.json'
 import { useAppStorage } from '../store/AppStorage'
 import { calculate_raid } from '../extra/calculator_storage'
 import { RAIDEnums } from '../store/types/enums'
@@ -19,15 +19,9 @@ export function draw_CoverSheet(doc: jsPDF): void {
     align: 'center'
   })
 
-  //TODO: Add this back
-  /* doc.text(
-    'Tool-Version ' + process.env.npm_package_version ?? 'error',
-    doc.internal.pageSize.getWidth() / 2,
-    255,
-    {
-      align: 'center'
-    }
-  )*/
+  doc.text('Tool-Version ' + version ?? 'error', doc.internal.pageSize.getWidth() / 2, 255, {
+    align: 'center'
+  })
 
   doc.setFontSize(15)
   return
@@ -46,7 +40,7 @@ export function draw_HostListPage(doc: jsPDF): void {
       host.name,
       host.cpu.cores * host.cpu.sockets + ' Cores',
       host.ram.size * host.ram.slots + ' GB',
-      host.storage.size * host.storage.amount + ' GB',
+      calculate_raid(host.storage.amount, host.storage.size, host.storage.raid, 1) + ' GB',
       host.uuids.length
     ]
   })
@@ -54,15 +48,23 @@ export function draw_HostListPage(doc: jsPDF): void {
   body_hosts.push([
     'Sum',
     '',
-    useAppStorage().hostsList.reduce((a, b) => a + b.cpu.cores * b.cpu.sockets, 0) + ' Cores',
-    useAppStorage().hostsList.reduce((a, b) => a + b.ram.size * b.ram.slots, 0) + ' GB',
-    useAppStorage().hostsList.reduce((a, b) => a + b.storage.size * b.storage.amount, 0) + ' GB',
+    useAppStorage().hostsList.reduce(
+      (a, b) => a + b.cpu.cores * b.cpu.sockets * b.uuids.length,
+      0
+    ) + ' Cores',
+    useAppStorage().hostsList.reduce((a, b) => a + b.ram.size * b.ram.slots * b.uuids.length, 0) +
+      ' GB',
+    useAppStorage().hostsList.reduce(
+      (a, b) =>
+        a + calculate_raid(b.storage.amount, b.storage.size, b.storage.raid, 1) * b.uuids.length,
+      0
+    ) + ' GB',
     useAppStorage().hostsList.reduce((a, b) => a + b.uuids.length, 0)
   ])
 
   autoTable(doc, {
     startY: 30,
-    head: [['ID', 'Name', 'CPU', 'RAM', 'Storage', 'Amount']],
+    head: [['ID', 'Name', 'CPU', 'RAM', 'Storage (RAID)', 'Amount']],
     body: body_hosts,
     didParseCell: function (data) {
       const rows = data.table.body
@@ -95,9 +97,9 @@ export function draw_VMListPage(doc: jsPDF): void {
   body_vms.push([
     'Sum',
     '',
-    useAppStorage().vmsList.reduce((a, b) => a + b.vcpu.rec, 0) + ' Cores',
-    useAppStorage().vmsList.reduce((a, b) => a + b.vram.rec, 0) + ' GB',
-    useAppStorage().vmsList.reduce((a, b) => a + b.vstorage.rec, 0) + ' GB',
+    useAppStorage().vmsList.reduce((a, b) => a + b.vcpu.rec * b.uuids.length, 0) + ' Cores',
+    useAppStorage().vmsList.reduce((a, b) => a + b.vram.rec * b.uuids.length, 0) + ' GB',
+    useAppStorage().vmsList.reduce((a, b) => a + b.vstorage.rec * b.uuids.length, 0) + ' GB',
     useAppStorage().vmsList.reduce((a, b) => a + b.uuids.length, 0)
   ])
 
