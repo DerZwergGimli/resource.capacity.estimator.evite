@@ -5,7 +5,7 @@
       v-if="hw_conf === HardwareEnums.cpu"
       :value="
         calculate_percentage(
-          host.cpu.sockets * host.cpu.cores * 2,
+          host.cpu.sockets * host.cpu.cores,
           get_used(host_uuid, VirtualHardwareEnums.vcpu)
         )
       "
