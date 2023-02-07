@@ -47,6 +47,7 @@ $ npm run build:linux
 The following resources may be useful for developing this app
 
 - [VueJS](https://vuejs.org/guide/introduction.html)
+- [ElectronVite](https://evite.netlify.app/guide/#electron-entry-point)
 - [Tailwind](https://tailwindcss.com/docs/installation)
 - [Flowbite](https://flowbite.com/)
 - [Flowbite-Vue](https://flowbite-vue.com/pages/getting-started)
