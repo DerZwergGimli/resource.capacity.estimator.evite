@@ -4,6 +4,7 @@ import { jsPDF } from 'jspdf'
 import { Tabs, Tab } from 'flowbite-vue'
 
 import { generatePDF_FULL, generatePDF_SIMPLE } from '../jsPDF/generator'
+import { Button } from 'flowbite-vue'
 
 const activeTab = ref('full')
 
@@ -31,7 +32,7 @@ function downloadPDF(is_full: boolean): void {
 </script>
 
 <template>
-  <div class="flex flex-col base-content">
+  <div class="flex flex-col base-content space-y-3">
     <div class="flex w-full justify-center">
       <tabs v-model="activeTab" variant="underline">
         <tab class="flex justify-center" name="full" title="FULL"> </tab>
@@ -39,12 +40,9 @@ function downloadPDF(is_full: boolean): void {
         <tab name="simple" title="SIMPLE"></tab>
       </tabs>
     </div>
-    <button
-      class="btn-style m-3"
-      @click="activeTab === 'full' ? downloadPDF(true) : downloadPDF(false)"
-    >
+    <Button @click="activeTab === 'full' ? downloadPDF(true) : downloadPDF(false)">
       Save pdf
-    </button>
+    </Button>
     <iframe
       class="p-3 flex flex-grow"
       width="100%"

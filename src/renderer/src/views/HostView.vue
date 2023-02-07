@@ -1,16 +1,3 @@
-<template>
-  <div class="host flex flex-col text-center">
-    <HostTable
-      class="m-3"
-      :hosts="store.hostsList"
-      @clk_remove_item="(host_uuids) => clk_removeHost(host_uuids)"
-    ></HostTable>
-    <div>
-      <button class="btn-style mb-3" @click="clk_addHost()">Add Host</button>
-    </div>
-  </div>
-</template>
-
 <script setup lang="ts">
 import { uuid } from 'vue-uuid'
 import HostTable from '../components/table/HostTable.vue'
@@ -19,6 +6,7 @@ import { useAppStorage } from '../store/AppStorage'
 import { defineComponent } from 'vue'
 import { RAIDEnums } from '../store/types/enums'
 import { TOAST_SUCCESS, TOAST_WARNING } from '../extra/toast-config'
+import { Button } from 'flowbite-vue'
 
 const store = useAppStorage()
 
@@ -48,3 +36,16 @@ function clk_removeHost(host_uuids: string[]): void {
   return
 }
 </script>
+
+<template>
+  <div class="host flex flex-col text-center">
+    <HostTable
+      class="m-3"
+      :hosts="store.hostsList"
+      @clk_remove_item="(host_uuids) => clk_removeHost(host_uuids)"
+    ></HostTable>
+    <div>
+      <Button @click="clk_addHost()">Add Host</Button>
+    </div>
+  </div>
+</template>

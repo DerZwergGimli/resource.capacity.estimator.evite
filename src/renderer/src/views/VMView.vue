@@ -5,6 +5,7 @@ import { createToast } from 'mosha-vue-toastify'
 import { defineComponent } from 'vue'
 import { TOAST_SUCCESS, TOAST_WARNING } from '../extra/toast-config'
 import { useAppStorage } from '../store/AppStorage'
+import { Button } from 'flowbite-vue'
 
 defineComponent({ VMTable })
 
@@ -54,7 +55,7 @@ function clk_removeVM(vm_uuids: string[]): void {
       @clk_remove_item="(vm_uuids) => clk_removeVM(vm_uuids)"
     ></VMTable>
     <div>
-      <button class="btn-style mb-3" @click="clk_addVM()">Add VM</button>
+      <Button @click="clk_addVM()">Add VM</Button>
     </div>
   </div>
 </template>
