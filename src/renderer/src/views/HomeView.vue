@@ -1,5 +1,5 @@
 <template>
-  <div class="home flex flex-col base-content">
+  <div class="home flex flex-col base-content justify-center">
     <div class="flex flex-row justify-center items-center space-x-2">
       <ul class="basis-1/2 space-y-1 text-gray-500 list-disc list-inside dark:text-gray-400">
         <TimeLineComponent
