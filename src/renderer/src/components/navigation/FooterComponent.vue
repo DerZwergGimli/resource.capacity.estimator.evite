@@ -1,5 +1,5 @@
 <script setup lang="ts">
-const app_version = "0.0.0"
+import { version } from '../../../../../package.json'
 </script>
 
 <template>
@@ -10,7 +10,7 @@ const app_version = "0.0.0"
     </span>
 
     <span class="p-2 block text-sm text-gray-500 sm:text-center dark:text-gray-400"
-      >Version {{ app_version }}
+      >Version {{ version }}
     </span>
   </footer>
 </template>
