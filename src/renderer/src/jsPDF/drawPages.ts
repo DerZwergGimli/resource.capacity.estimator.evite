@@ -5,11 +5,14 @@ import { useAppStorage } from '../store/AppStorage'
 import { calculate_raid } from '../extra/calculator_storage'
 import { RAIDEnums } from '../store/types/enums'
 import { addResources } from './usedResources'
+import { draw_image } from './load_image'
 
 export function draw_CoverSheet(doc: jsPDF): void {
   draw_outline(doc)
 
-  doc.setFontSize(15)
+  draw_image(doc)
+
+  doc.setFontSize(20)
   doc.text('Virtual Environment Estimator', doc.internal.pageSize.getWidth() / 2, 50, {
     align: 'center'
   })
@@ -119,6 +122,7 @@ export function draw_VMListPage(doc: jsPDF): void {
 
 export function draw_AssignmentPage(doc: jsPDF, show_vm_list: boolean): void {
   draw_outline(doc)
+
   doc.text('Assignments-List', doc.internal.pageSize.getWidth() / 2, 20, {
     align: 'center'
   })
@@ -132,7 +136,7 @@ export function draw_AssignmentPage(doc: jsPDF, show_vm_list: boolean): void {
     const current_host = useAppStorage().hostsList.find((host) =>
       host.uuids.some((uuid) => uuid === useAppStorage().assignmentsList[i].host_uuid)
     )
-
+    doc.setFontSize(15)
     doc.text(current_host?.name ?? 'error', doc.internal.pageSize.getWidth() / 2, offsetY, {
       align: 'center'
     })
