@@ -59,7 +59,7 @@
             ></host-resources>
             <div class="flex flex-row space-x-2 items-center">
               <icon-calculator />
-              <p class="text-sm pt-1">{{ host.cpu.sockets * host.cpu.cores * 2 }} vCores</p>
+              <p class="text-sm pt-1">{{ host.cpu.sockets * host.cpu.cores }} vCores</p>
             </div>
           </td>
           <td>
@@ -160,4 +160,3 @@ defineProps({
   }
 })
 </script>
-

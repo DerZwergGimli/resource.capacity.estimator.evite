@@ -41,7 +41,7 @@
         </p>
         /
         <p v-if="hw_conf === HardwareEnums.cpu">
-          {{ host.cpu.sockets * host.cpu.cores * 2 }}
+          {{ host.cpu.sockets * host.cpu.cores }}
         </p>
         <p v-if="hw_conf === HardwareEnums.ram">
           {{ host.ram.slots * host.ram.size }}
